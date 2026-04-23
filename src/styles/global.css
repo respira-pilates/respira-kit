@@ -1,0 +1,67 @@
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --color-cream: #fef4e8;
+  --color-graphite: #5a585c;
+  --color-teal: #b2dfe2;
+  --color-nude: #e5cbb4;
+  --color-grey: #ddd6d6;
+  --color-white: #ffffff;
+
+  --color-bg: var(--color-cream);
+  --color-text: var(--color-graphite);
+  --color-accent: var(--color-teal);
+  --color-accent-soft: var(--color-nude);
+  --color-border: var(--color-grey);
+
+  --font-primary: var(--font-josefin), Arial, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  --radius-card: 12px;
+  --radius-btn: 6px;
+}
+
+/* ============================================
+   RESET
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================
+   BASE
+   ============================================ */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+h1, h2, h3 {
+  font-family: var(--font-primary);
+  line-height: 1.2;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: 1.125rem; font-weight: 400; }
+
+p { font-size: 1rem; line-height: 1.7; }
