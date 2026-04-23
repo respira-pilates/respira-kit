@@ -1,0 +1,31 @@
+---
+import { Font } from 'astro:assets'
+import '../styles/global.css'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'Una clase para cada momento · Respira Pilates',
+  description = 'Elige cómo te sientes hoy y encuentra la clase de Pilates que necesitas ahora mismo.'
+} = Astro.props
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <Font cssVariable="--font-josefin" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
