@@ -1,17 +1,180 @@
 ---
+import Layout from '../layouts/Layout.astro'
+import SituationCard from '../components/SituationCard.astro'
 
+const situations = [
+  {
+    icon: '⏱',
+    title: '¿Solo tienes 10 minutos?',
+    benefit: 'Con 10 minutos tienes suficiente. Mueve el cuerpo, suelta la tensión y vuelve al día sintiéndote un poco más tú.',
+    vimeoId: 'VIMEO_ID_1',
+  },
+  {
+    icon: '🌿',
+    title: '¿Tu espalda está cargada o contracturada?',
+    benefit: 'Para cuando la espalda ya habla por ti. Una clase pensada para soltar lo que llevas acumulado y salir sintiéndote distinta.',
+    vimeoId: 'VIMEO_ID_2',
+  },
+  {
+    icon: '✨',
+    title: '¿Necesitas subir la energía?',
+    benefit: 'Para los días en que el cuerpo dice no pero tú quieres decir sí. Muévete a tu ritmo y sal con más impulso del que entraste.',
+    vimeoId: 'VIMEO_ID_3',
+  },
+  {
+    icon: '🌬',
+    title: '¿Estás estresada y necesitas un momento solo para ti?',
+    benefit: 'Cuando la cabeza no para. Una clase para bajar el volumen, respirar y volver a sentirte tú.',
+    vimeoId: 'VIMEO_ID_4',
+  },
+  {
+    icon: '🌊',
+    title: '¿Te sientes rígida y sin movilidad?',
+    benefit: 'Para cuando el cuerpo parece de cartón. Una clase suave para recuperar la movilidad y moverte con más libertad.',
+    vimeoId: 'VIMEO_ID_5',
+  },
+  {
+    icon: '🌱',
+    title: '¿Llevas tiempo sin moverte y no sabes por dónde empezar?',
+    benefit: 'No importa cuánto tiempo lleves sin moverte. Esta clase es tu punto de vuelta — sin juicio, sin exigencias.',
+    vimeoId: 'VIMEO_ID_6',
+  },
+]
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Respira Pilates</p>
+      <h1 class="hero__title">Una clase<br/><em>para cada momento</em></h1>
+      <p class="hero__subtitle">
+        Porque cuidarte no siempre requiere una hora libre.<br/>
+        Elige cómo te sientes hoy y encuentra la clase que necesitas ahora mismo.
+      </p>
+    </div>
+  </section>
+
+  <section class="cards-section">
+    <div class="cards-grid">
+      {situations.map(s => (
+        <SituationCard
+          icon={s.icon}
+          title={s.title}
+          benefit={s.benefit}
+          vimeoId={s.vimeoId}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title">¿Te ha gustado? Esto es solo una muestra.</h2>
+      <p class="cta-body">
+        En el Estudio Respira Pilates tienes más de 300 clases, calendarios mensuales
+        y todo el acompañamiento que necesitas para crear una rutina que por fin encaje contigo.
+      </p>
+      <a
+        class="cta-btn"
+        href="https://www.respirapilates.com/estudio-online/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Quiero entrar al Estudio
+      </a>
+      <p class="cta-microcopy">Desde 35€/mes · Cancela cuando quieras.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.hero {
+  background-color: var(--color-bg);
+  padding: var(--space-xl) var(--space-sm);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero__inner { max-width: 680px; margin: 0 auto; }
+
+.hero__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: var(--space-sm);
+}
+
+.hero__title { margin-bottom: var(--space-sm); }
+
+.hero__title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  opacity: 0.75;
+}
+
+.cards-section {
+  padding: var(--space-xl) var(--space-sm);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 640px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (width >= 1024px) {
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.cta-section {
+  background-color: var(--color-graphite);
+  color: var(--color-cream);
+  padding: var(--space-xl) var(--space-sm);
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.cta-title { font-weight: 300; color: var(--color-cream); }
+
+.cta-body { opacity: 0.8; }
+
+.cta-btn {
+  display: inline-block;
+  background: var(--color-cream);
+  color: var(--color-graphite);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.cta-btn:hover { opacity: 0.85; }
+
+.cta-microcopy {
+  font-size: 0.78rem;
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+</style>
