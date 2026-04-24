@@ -11,6 +11,8 @@ const {
   title = 'Una clase para cada momento · Respira Pilates',
   description = 'Elige cómo te sientes hoy y encuentra la clase de Pilates que necesitas ahora mismo.'
 } = Astro.props
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 ---
 <!doctype html>
 <html lang="es">
@@ -23,13 +25,13 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <Font cssVariable="--font-josefin" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
   </head>
   <body>
     <header class="site-header">
-      <a href={import.meta.env.BASE_URL} aria-label="Respira Pilates — inicio">
+      <a href={`${base}/`} aria-label="Respira Pilates — inicio">
         <img
-          src={`${import.meta.env.BASE_URL}HORIZONTAL_Mesa%20de%20trabajo%201%20copia%204.png`}
+          src={`${base}/logo-horizontal.png`}
           alt="Respira Pilates"
           class="header-logo"
           height="52"
