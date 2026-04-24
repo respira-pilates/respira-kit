@@ -26,6 +26,39 @@ const {
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
   </head>
   <body>
+    <header class="site-header">
+      <a href={import.meta.env.BASE_URL} aria-label="Respira Pilates — inicio">
+        <img
+          src={`${import.meta.env.BASE_URL}HORIZONTAL_Mesa%20de%20trabajo%201%20copia%204.png`}
+          alt="Respira Pilates"
+          class="header-logo"
+          height="52"
+        />
+      </a>
+    </header>
     <slot />
   </body>
 </html>
+
+<style>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background: rgba(254, 244, 232, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(221, 214, 214, 0.6);
+}
+
+.header-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}
+</style>

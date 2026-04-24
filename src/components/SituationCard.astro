@@ -4,11 +4,12 @@ interface Props {
   title: string
   benefit: string
   vimeoId: string
+  index?: number
 }
-const { icon, title, benefit, vimeoId } = Astro.props
+const { icon, title, benefit, vimeoId, index = 0 } = Astro.props
 ---
 
-<article class="card" data-vimeo-id={vimeoId}>
+<article class="card" data-vimeo-id={vimeoId} style={`--i: ${index}`}>
   <div class="card__icon">{icon}</div>
   <h3 class="card__title">{title}</h3>
   <p class="card__benefit">{benefit}</p>
@@ -37,6 +38,17 @@ const { icon, title, benefit, vimeoId } = Astro.props
       ;(btn as HTMLElement).style.display = 'none'
     })
   })
+
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+        observer.unobserve(entry.target)
+      }
+    }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  )
+  document.querySelectorAll('.card').forEach(card => observer.observe(card))
 </script>
 
 <style>
@@ -48,7 +60,18 @@ const { icon, title, benefit, vimeoId } = Astro.props
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.55s ease calc(var(--i, 0) * 0.08s),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 0.08s),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
