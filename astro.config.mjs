@@ -1,7 +1,7 @@
 import { defineConfig, fontProviders } from 'astro/config'
 
 export default defineConfig({
-  site: 'https://lee-aina.github.io',
+  site: 'https://respira-pilates.github.io',
   base: '/respira-kit',
   fonts: [{
     provider: fontProviders.google(),
